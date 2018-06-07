@@ -44,3 +44,7 @@ set
 存取描述符	Yes	Yes	No	No	Yes	Yes
 如果一个描述符不具有value,writable,get 和 set 任意一个关键字，那么它将被认为是一个数据描述符。
 如果一个描述符同时有(value或writable)和(get或set)关键字，将会产生一个异常。
+创建属性
+如果对象中不存在指定的属性，Object.defineProperty()就创建这个属性。当描述符中省略某些字段时，这些字段将使用它们的默认值。拥有布尔值的字段的默认值都是false。value，get和set字段的默认值为undefined。一个没有get/set/value/writable定义的属性被称为“通用的”，并被“键入”为一个数据描述符。
+
+
