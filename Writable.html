@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Writable属性</title>
+</head>
+<body>
+    <script>
+        var o = {};
+        Object.defineProperty(o,"a",{
+            value:37,
+            writable:false
+        })
+        console.log(o.a);//37
+        o.a = 25;// No error thrown
+        // (it would throw in strict mode,
+        // even if the value had been the same)
+        console.log(o.a);
+        (function(){
+            'use strict';
+            var o = {};
+            Object.defineProperty(o,'b',{
+                value:2,
+                writable:false
+            });
+            o.b = 3;//Writable.html:28 Uncaught TypeError: Cannot assign to read only property 'b' of object '#<Object>'
+//     at Writable.html:28
+//     at Writable.html:30
+// (anonymous) @ Writable.html:28
+// (anonymous) @ Writable.html:30
+            return o.b;
+        }())
+    </script>
+    
+</body>
+</html>

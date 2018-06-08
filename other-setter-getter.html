@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>其他setter,getter</title>
+</head>
+<body>
+    <h1>下面的例子展示了如何实现一个自存档对象。 当设置temperature 属性时，archive 数组会获取日志条目。</h1>
+    <script>
+        var pattern = {
+            get:function(){
+                return 'I alway return this string,whatever you have assigned';
+            },
+            set:function(){
+                this.myname = 'This is my name string';
+            }
+        };
+        function TestDefineSetAndGet(){
+            Object.defineProperty(this,'myproperty',pattern);
+        }
+        var instance = new TestDefineSetAndGet();
+        instance.myproperty = 'test';
+        console.log(instance.myproperty);
+        console.log(instance.myname);
+    </script>
+</body>   
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Configurable属性</title>
+</head>
+<body>
+    <h1>configurable特性表示对象的属性是否可以被删除，以及除writable特性外的其他特性是否可以被修改。</h1>
+    <script>
+        var o = {};
+        Object.defineProperty(o,"a",{get:function(){return 1;},
+        configurable:false});
+        console.log(o.a);
+        Object.defineProperty(o,"a",{configurable:true});
+        console.log(o.a);//Configurable.html:16 Uncaught TypeError: Cannot redefine property: a
+        Object.defineProperty(o,"a",{enumerable:true});
+        console.log(o.a);
+        Object.defineProperty(o,"a",{set:function(){}});
+        Object.defineProperty(o,"a",{get:function(){return 1;}});
+        Object.defineProperty(o,"a",{value:12});
+        console.log(o.a);
+        delete o.a;
+        console.log(o.a);
+    </script>
+</body>
+</html>

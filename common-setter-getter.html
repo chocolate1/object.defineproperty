@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置temperature</title>
+</head>
+<body>
+    <h1>当设置temperature 属性时，archive 数组会获取日志条目。</h1>
+    <script>
+        function Archiver(){
+            var temperature = null;
+            var archive = [];
+            Object.defineProperty(this,'temperature',{
+                get:function(){
+                    console.log('get!');
+                    return temperature;
+                },
+                set:function(value){
+                    console.log('set!');
+                    temperature = value;
+                    archive.push({val:temperature});
+                }
+            });
+            this.getArchive = function(){
+                return archive;
+            }
+        }
+        var arc = new Archiver();
+        arc.temperature;//'get
+        console.log(arc.temperature);
+        arc.temperature = 11;
+        arc.temperature = 13;
+        arc.getArchive();//[{val:11},{val:13}]
+        console.log(arc.getArchive());
+    </script>
+    
+</body>
+</html>
