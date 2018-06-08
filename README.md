@@ -1,5 +1,6 @@
 # object.defineproperty
-据说object.defineproperty是个很牛逼的方法....so，let's get it
+据说object.defineproperty是个很牛逼的方法....so，let's get it。
+vue是通过数据劫持的方式来做数据绑定的，其中最核心的方法便是通过Object.defineProperty()来实现对属性的劫持，达到监听数据变动的目的
 vue.js是通过它实现双向绑定的。俗称属性拦截器。而且专门用来监控对象属性变化的Object.observe方法也被草案发起人撤回了(此方法在node环境中仍能使用)。
 可见defineProperty的威力之大。
 Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象
